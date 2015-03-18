@@ -3,12 +3,19 @@
 <title>Life</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300">
 <style>
-*{
+html{
 	font-family: Open Sans, Helvetica, Arial, sans-serif;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
+}
+html{
+	height: 100%;
 }
 body{
+	min-height: 100%;
 	color: #fff;
 	background-color: #384047;
 	margin: 0;
@@ -50,7 +57,9 @@ h1{
 	padding-bottom: 5em;
 }
 #life section.year{
+	min-height: 100%;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	border-left: 1px dashed rgba(255,255,255,.1);
 	color: rgba(255,255,255,.3);
 	position: absolute;
@@ -257,7 +266,7 @@ h1{
 				}
 				d.text = d.text.replace(link[0], "<a href='" + link[2] + "'" + link_attr + ">" + link[1] + "</a>");
 			}
-			
+
 			return '<div class="event" style="margin-left: ' + offset.toFixed(2) + 'px">'
 				+ '<div class="time" style="width: ' + width.toFixed(2) + 'px"></div>'
 				+ '<b>' + d.time.title + '</b> ' + d.text + '&nbsp;&nbsp;'
@@ -301,6 +310,34 @@ h1{
 		}
 	};
 
+	var slider = {
+		startingMousePostition: {},
+		startingPagePosition: {},
+		init: function(){
+			window.addEventListener('mousedown', function(event){
+				slider.startingMousePostition = {
+					x: event.clientX,
+					y: event.clientY
+				};
+				slider.startingPagePosition = {
+					x: window.pageXOffset,
+					y: window.pageYOffset
+				};
+				window.addEventListener('mousemove', slider.slide);
+			});
+			window.addEventListener('mouseup', function(event){
+				window.removeEventListener('mousemove', slider.slide);
+			});
+		},
+		slide: function(event){
+			event.preventDefault();
+			var x = slider.startingPagePosition.x + (slider.startingMousePostition.x - event.clientX);
+			var y = slider.startingPagePosition.y + (slider.startingMousePostition.y - event.clientY);
+			window.scrollTo(x, y);
+		}
+	};
+
 	life.start();
+	slider.init();
 })();
 </script>
