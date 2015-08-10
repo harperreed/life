@@ -21,7 +21,7 @@
 - 06/2001-02/2008 Apartment on Kedzie ave
 - 02/2008-08/2010 Apartment on Berteau ave
 - 08/2010-02/2014 Apartment on St. Paul st
-- 02/2014-~ Apartment on St. Paul st
+- 02/2014-~ Condo on Paulina
 
 #Life
 - 14/02/1981 - Brother @dylanreed was born
