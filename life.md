@@ -35,7 +35,8 @@
 - 08/2005-10/2009 Chief Technology Officer @ skinnyCorp, LLC
 - 10/2009-04/2010 Customer in Residence @ Rackspace Hosting
 - 04/2011-12/2012 Chief Technology Officer @ Obama for America
-- 12/2012-~ CEO @ Modest, Inc.
+- 12/2012-08/2015 CEO @ Modest, Inc.
+- 8/2015-~ Director @ Paypal, Inc.
 
 #Awards
 - 01/2002 Net Vision Honorary Mention @ PRIX ARS ELECTRONICA 
@@ -44,4 +45,7 @@
 - 04/2013 Breakout of the Year @ Webby's
 - 06/2013 CTO of the Year @ Moxie Award
 
+#Milestones
+- 19/08/2015 Sold Modest, inc to paypal
+- 01/2013-~  Speaking internationally 
 
