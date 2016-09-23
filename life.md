@@ -24,10 +24,6 @@
 - 02/2014-08/2016 Condo on Paulina
 - 08/2016-~ House on Ohio
 
-#Life
-- 14/02/1981 - Brother @dylanreed was born
-- 29/08/2007 - Married Hiromi
-
 #Jobs
 - 2000-2001 Intern @ MSI
 - 06/2001-10/2004 Security and Software Engineer @ World Book Publishing
@@ -47,10 +43,12 @@
 - 06/2013 CTO of the Year @ Moxie Award
 
 #Milestones
-- 19/08/2015 Sold Modest, Inc to paypal
+- 14/02/1981 - Brother @dylanreed was born
+- 29/08/2007 - Married Hiromi
 - 01/2013-~  Speaking internationally 
 - 21/03/1991 Turned 13
 - 21/03/1998 Turned 20 
 - 21/03/2008 Turned 30
+- 19/08/2015 Sold Modest, Inc to paypal
 
 
