@@ -21,7 +21,8 @@
 - 06/2001-02/2008 Apartment on Kedzie ave
 - 02/2008-08/2010 Apartment on Berteau ave
 - 08/2010-02/2014 Apartment on St. Paul st
-- 02/2014-~ Condo on Paulina
+- 02/2014-08/2016 Condo on Paulina
+- 08/2016-~ House on Ohio
 
 #Life
 - 14/02/1981 - Brother @dylanreed was born
@@ -46,7 +47,7 @@
 - 06/2013 CTO of the Year @ Moxie Award
 
 #Milestones
-- 19/08/2015 Sold Modest, inc to paypal
+- 19/08/2015 Sold Modest, Inc to paypal
 - 01/2013-~  Speaking internationally 
 - 21/03/1991 Turned 13
 - 21/03/1998 Turned 20 
