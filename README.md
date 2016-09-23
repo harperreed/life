@@ -3,7 +3,7 @@ Life
 
 This is something that I've wanted to build for a long time. It's a **timeline of important events** in my life, visualized in a way my mind always imagine it. There was something called [**Lifepath.me**](http://dcurt.is/facebook-timelines-and-lifepath-me-4) but now it's gone. How about Facebook timeline? Meh.
 
-So, this is it. Have a look at [cheeaun.github.io/life](http://cheeaun.github.io/life).
+So, this is it. Have a look at [cheeaun.life](http://cheeaun.life/).
 
 Features
 --------
@@ -34,10 +34,6 @@ How to setup your own *Life*
 8. Update the website link in your GitHub repo description.
 9. Tell the world about your Life.
 10. Add your Life to the [Lives](https://github.com/cheeaun/life/wiki/Lives) page.
-
-Use [Nitrous.IO](https://www.nitrous.io/?utm_source=github.com&utm_campaign=Life&utm_medium=hackonnitrous) to create your own *Life* in seconds:
-
-[![Hack cheeaun/life on Nitrous.IO](https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-l-v1-3cc067e71372f6045e1949af9d96095b.png)](https://www.nitrous.io/hack_button?source=embed&runtime=nodejs&repo=cheeaun%2Flife&file_to_open=README)
 
 How to upgrade your *Life*
 --------------------------

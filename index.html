@@ -5,33 +5,31 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300">
 <style>
-html{
-	font-family: Open Sans, Helvetica, Arial, sans-serif;
-	cursor: -webkit-grab;
-	cursor: -moz-grab;
-	cursor: grab;
-}
-html{
-	height: 100%;
-}
 body{
-	min-height: 100%;
+	font-family: Open Sans, Helvetica, Arial, sans-serif;
 	color: #fff;
 	background-color: #384047;
 	margin: 0;
 	padding: 0;
 	font-size: 12px;
 	-webkit-text-size-adjust: none;
-	position: relative;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
 }
 a{
 	color: #fff;
 }
 header{
+	z-index: 3;
+	background: linear-gradient(to bottom, rgba(56,64,71,0) 0%,rgba(56,64,71,.5) 20%,rgba(56,64,71,1) 50%,rgba(56,64,71,.5) 80%,rgba(56,64,71,0) 100%);
 	position: fixed;
 	bottom: 0;
+	left: 0;
 	margin: 0;
-	padding: 20px;
+	padding: 10px;
 }
 header a{
 	margin-left: 1em;
@@ -45,7 +43,6 @@ header a:hover{
 h1{
 	display: inline;
 	font-size: 20px;
-	font-weight: normal;
 	line-height: 1em;
 	opacity: .5;
 	z-index: 3;
@@ -53,29 +50,67 @@ h1{
 	white-space: nowrap;
 }
 #life{
-	padding-top: 40px;
-	padding-bottom: 5em;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
 }
-#life section.year{
-	min-height: 100%;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border-left: 1px dashed rgba(255,255,255,.1);
-	color: rgba(255,255,255,.3);
+#life-years{
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	padding-left: 10px;
-	padding-top: 10px;
+	white-space: nowrap;
 	pointer-events: none;
+}
+#life-years .year{
+	display: inline-block;
+	box-sizing: border-box;
+	color: #fff;
 	font-weight: 300;
 	white-space: nowrap;
+	box-sizing: border-box;
+	height: 100%;
+	border-left: 1px dashed rgba(255,255,255,.2);
+}
+#life-years .year:first-child{
+	border-left: 0;
+}
+#life-years .year span{
+	background: linear-gradient(to bottom, rgba(56,64,71,1) 30%,rgba(56,64,71,0) 100%);
+	display: block;
+	padding: 10px;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 3;
+}
+#life-years .year span i{
+	opacity: .5;
+	font-style: normal;
+}
+#life-events{
+	padding-top: 40px;
+	padding-bottom: 5em;
+	position: relative;
+}
+#life-events:after{
+	content: '';
+	display: block;
+	clear: left;
 }
 #life .event{
 	padding-right: 20px;
 	padding-bottom: 5px;
 	vertical-align: middle;
 	white-space: nowrap;
+	float: left;
+	clear: left;
 }
 #life .event b{
 	font-weight: normal;
@@ -269,9 +304,8 @@ h1{
 
 			return '<div class="event" style="margin-left: ' + offset.toFixed(2) + 'px">'
 				+ '<div class="time" style="width: ' + width.toFixed(2) + 'px"></div>'
-				+ '<b>' + d.time.title + '</b> ' + d.text + '&nbsp;&nbsp;'
+				+ '<b>' + d.time.title + '</b> ' + d.text
 				+ '</div>';
-			return '';
 		},
 		renderYears: function(firstYear, lastYear){
 			var dayLength = life.config.yearLength/12/30;
@@ -279,10 +313,10 @@ h1{
 			var days = 0;
 			var hideAge = life.config.hideAge;
 			for (var y=firstYear, age = 0; y<=lastYear+1; y++, age++){
-				html += '<section class="year" style="left: ' + (days*dayLength).toFixed(2) + 'px">'
-					+ y + (hideAge ? '' : (' (' + age + ')'))
-					+ '</section>';
-				days += (y % 4 == 0) ? 366 : 365;
+				var days = (y % 4 == 0) ? 366 : 365;
+				html += '<div class="year" style="width: ' + (days*dayLength).toFixed(2) + 'px"><span>'
+					+ y + (hideAge ? '' : (' <i>(' + age + ')</i>'))
+					+ '</span></div>';
 			}
 			return html;
 		},
@@ -302,26 +336,29 @@ h1{
 			});
 			life.firstYear = firstYear;
 
-			var html = life.renderYears(firstYear, lastYear);
+			var html = '<div id="life-events">';
+			// 'comment_' class name is to hide it from Safari Reader
+			html += '<div id="life-years" class="comment_">' + life.renderYears(firstYear, lastYear) + '</div>';
 			data.forEach(function(d){
 				html += life.renderEvent(d);
 			});
+			html += '</div>';
 			life.$el.innerHTML = html;
 		}
 	};
 
 	var slider = {
 		startingMousePostition: {},
-		startingPagePosition: {},
+		containerOffset: {},
 		init: function(){
 			window.addEventListener('mousedown', function(event){
 				slider.startingMousePostition = {
 					x: event.clientX,
 					y: event.clientY
 				};
-				slider.startingPagePosition = {
-					x: window.pageXOffset,
-					y: window.pageYOffset
+				slider.containerOffset = {
+					x: life.$el.scrollLeft,
+					y: life.$el.scrollTop
 				};
 				window.addEventListener('mousemove', slider.slide);
 			});
@@ -331,9 +368,10 @@ h1{
 		},
 		slide: function(event){
 			event.preventDefault();
-			var x = slider.startingPagePosition.x + (slider.startingMousePostition.x - event.clientX);
-			var y = slider.startingPagePosition.y + (slider.startingMousePostition.y - event.clientY);
-			window.scrollTo(x, y);
+			var x = slider.containerOffset.x + (slider.startingMousePostition.x - event.clientX);
+			var y = slider.containerOffset.y + (slider.startingMousePostition.y - event.clientY);
+			life.$el.scrollLeft = x;
+			life.$el.scrollTop = y;
 		}
 	};
 
